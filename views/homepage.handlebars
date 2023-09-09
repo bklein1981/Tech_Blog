@@ -1,0 +1,23 @@
+<main>
+    <div class="navbar custom-brown">
+        <div class="navbar-brand">
+            <div class="nav-badge px-3 lrg-font">The Tech Blog</div>
+        </div>
+    </div>
+</main>
+<section class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                {{#each posts as |post| }}
+                <div class="brown-border mt-5">
+                    <div class="custom-brown custom-green strong-text h2-padding sml-font">{{post.title}}<span
+                            class="float-r xsml-font">Posted by {{post.user.user_name}} on {{format_date post.date_created}}</span>
+                    </div>
+                    <p class="xsml-font p-3">{{post.entry}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

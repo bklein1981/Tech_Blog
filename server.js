@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
 //importing sequelize  & sequelizeStore
 const sequelize = require('./config/connection');
@@ -14,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 //creating instance of handlebar
-const hbs = exphbs.create();
+const hbs = exphbs.create({ helpers });
 
 //setting up session
 const sess = {
@@ -49,5 +50,5 @@ app.use(routes);
 
 //syncing sequelize and starting the express server
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+    app.listen(PORT, () => console.log('Now listening at http://127.0.0.1:' + PORT))
 });
