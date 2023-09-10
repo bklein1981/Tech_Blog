@@ -15,10 +15,15 @@
     <header class="navbar custom-brown">
         <nav class="container-fluid pb-3">
             <ul class="navbar-nav flex-row nav-margin">
-                <button type="button" class="btn nav-btn nav-padding" id="home">Home</button>
-                <button type="button" class="btn nav-btn nav-padding" id="dashboard">Dashboard</button>
-                <button type="button" class="btn nav-btn nav-padding" id="login">Login</button>
-                <button type="button" class="btn nav-btn nav-padding" id="logout">Logout</button>
+                <a href="/" class="btn nav-btn nav-padding">Home</a>
+                <a href="/dashboard" class="btn nav-btn nav-padding">Dashboard</a>
+                {{#if logged_in}}
+                <a class="hidden-button" id="login">Login</a>
+                <a class="btn nav-btn nav-padding" id="logout">Logout</a>
+                {{else}}
+                <a href="/login" class="btn nav-btn nav-padding">Login</a>
+                <a class="hidden-button" id="logout">Logout</a>
+                {{/if}}
             </ul>
         </nav>
     </header>
@@ -26,5 +31,8 @@
         {{{ body }}}
     </section>
 </body>
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+{{/if}}
 
 </html>

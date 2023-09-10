@@ -60,6 +60,10 @@ section {
     padding: 15px 20px
 }
 
+.hidden-button {
+    display: none;
+  }
+
 .lrg-font {
     font-size: 45px
 }
