@@ -2,9 +2,9 @@ const router = require('express').Router();
 const { Post, User } = require('../models');
 //const authUser = require('../utils/auth');
 
-//homePage Get
+//homePage Get route to display homepage
 router.get('/', async (req, res) => {
-  console.log("homepage GET route is working");
+  console.log("homepage GET request received");
     try {
 
         const postData = await Post.findAll({
@@ -26,9 +26,10 @@ router.get('/', async (req, res) => {
     }
 });
 
+//Dashboard GET route to display dashboard
 router.get('/dashboard', async (req, res) => {
 try {
-    console.log("dashboard GET route is working")
+    console.log("dashboard GET request received")
 
     res.render('dashboard', {
         //...user,
@@ -40,25 +41,26 @@ try {
 }
 });
 
+//login GET route to display login page
 router.get('/login', (req, res) => {
-    console.log("login GET route is working")
+    console.log("login GET request received")
     // If the user is already logged in, redirect the request to another route
     if (req.session.logged_in) {
       res.redirect('/profile');
       return;
     }
-  
+
     res.render('login');
   });
 
+  //Signup GET route to display signin page
   router.get('/signup', (req, res) => {
-    console.log("signup GET route is working")
+    console.log("signup GET request received")
     // If the user is already logged in, redirect the request to another route
-    // if (req.session.logged_in) {
-    //   res.redirect('/profile');
-    //   return;
-    // }
-  
+    if (req.session.logged_in) {
+      res.redirect('/profile');
+      return;
+    }
     res.render('signup');
   });
 
