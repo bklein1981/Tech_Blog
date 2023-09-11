@@ -101,7 +101,7 @@ router.get('/new_posts', userAuth, async (req, res) => {
 })
 
 router.get('/post_edit/:id', userAuth, async (req, res) => {
-  console.log('new post-edit POST request received')
+  console.log('new post-edit GET request received')
   try {
     const rawReturn = await Post.findByPk(req.params.id, {
       where: {
@@ -110,12 +110,13 @@ router.get('/post_edit/:id', userAuth, async (req, res) => {
       }
     });
     const post = rawReturn.get({ plain: true });
-   // console.log(post)
+   console.log(post)
     res.render('postedit',{
-      ...post,
+      post,
       logged_in: req.session.logged_in
     })
   } catch (err) {
+    console.log("Get route",err)
     res.status(500).json(err);
   }
 })
