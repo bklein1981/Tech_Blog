@@ -1,10 +1,14 @@
+body {
+    background-color: #DDE9D3;
+}
+
 a {
     font-size: 25px;
     text-decoration: none;
 }
 
 section {
-    min-height: 650px;
+    min-height: 500px;
     background-color: #DDE9D3;
     font-family: 'Open Sans', sans-serif;
 }

@@ -11,7 +11,7 @@ const signupFormHandler = async (event) => {
     }
 
     const userData = {
-        name: name,
+        user_name: name,
         password: password,
     };
     
@@ -24,7 +24,7 @@ const signupFormHandler = async (event) => {
         });
         console.log(userData)
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/dashboard');
         } else {
             alert('Signup failed. Please check your input.');
         }

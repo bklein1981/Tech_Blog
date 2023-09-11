@@ -3,7 +3,12 @@ const loginFormHandler = async (event) => {
   // Collect values from the login form
   const username = document.querySelector('#userNameLogin').value.trim();
   const password = document.querySelector('#passwordLogin').value.trim();
-  if (username && password) {
+  if (!username || !password) {
+    // Check if either name or password is missing
+    alert('Please provide both a username and password.');
+    return; // Exit the function early if data is missing
+  }
+  else {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
       method: 'POST',
@@ -14,7 +19,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/dashboard');
     } else {
-      alert('this is the problem' + response.statusText);
+      alert(response.statusText);
     }
   }
 };

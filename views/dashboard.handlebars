@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         {{#each posts as |post| }}
         <div class="col-10">
-            <div class="custom-gray-bg custom-gray radius sml-font p-3">{{post.title}}<span class="float-r">{{format_date post.date_created}}</span></div>
+            <a href="/"><div class="custom-gray-bg custom-gray radius sml-font p-3">{{post.title}}<span class="float-r">{{format_date post.date_created}}</span></div></a>
         </div>
         {{/each}}
     </div>
@@ -17,7 +17,9 @@
 <div class="container-fluid custom-grn-bg text-center pb-3">
     <div class="row align-items-end">
         <div>
-            <button type="button" class="btn btn-lg custom-brown custom-green med-font radius15">+ New Post</button>
+            <button type="button" class="btn btn-lg custom-brown custom-green med-font radius15" id="new-post">+ New Post</button>
         </div>
     </div>
 </div>
+
+<script src="/js/gotopost.js"></script>
