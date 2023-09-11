@@ -92,14 +92,33 @@ router.get('/dashboard', userAuth, async (req, res) => {
 router.get('/new_posts', userAuth, async (req, res) => {
   console.log('new post POST request received')
   try {
-      res.render('newpost', {
-          logged_in: req.session.logged_in
-      })
+    res.render('newpost', {
+      logged_in: req.session.logged_in
+    })
   } catch (err) {
-      res.status(500).json(err);
+    res.status(500).json(err);
   }
 })
 
+router.get('/post_edit/:id', userAuth, async (req, res) => {
+  console.log('new post-edit POST request received')
+  try {
+    const rawReturn = await Post.findByPk(req.params.id, {
+      where: {
+        title: req.body.title,
+        entry: req.body.entry
+      }
+    });
+    const post = rawReturn.get({ plain: true });
+   // console.log(post)
+    res.render('postedit',{
+      ...post,
+      logged_in: req.session.logged_in
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 
 

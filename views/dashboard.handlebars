@@ -8,8 +8,8 @@
 <section class="container-fluid py-5">
     <div class="row justify-content-center">
         {{#each posts as |post| }}
-        <div class="col-10">
-            <a href="/"><div class="custom-gray-bg custom-gray radius sml-font p-3">{{post.title}}<span class="float-r">{{format_date post.date_created}}</span></div></a>
+        <div class="col-10 pb-2">
+            <a href="/post_edit/{{post.id}}"><div class="custom-gray-bg custom-gray radius sml-font p-3">{{post.title}}<span class="float-r">{{format_date post.date_created}}</span></div></a>
         </div>
         {{/each}}
     </div>
