@@ -60,7 +60,7 @@ router.get('/login', (req, res) => {
   console.log("login GET request received")
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
 
@@ -72,7 +72,7 @@ router.get('/signup', (req, res) => {
   console.log("signup GET request received")
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/dashboard');
     return;
   }
   res.render('signup');
