@@ -12,7 +12,7 @@
             <div class="col-10">
                 {{#each posts as |post| }}
                 <div class="brown-border mt-5">
-                    <div class="custom-brown custom-green strong-text h2-padding sml-font"><a href="/blogview">{{post.title}}</a><span
+                    <div class="custom-brown custom-green strong-text h2-padding sml-font"><a href="/post_view/{{post.id}}">{{post.title}}</a><span
                             class="float-r xsml-font">Posted by {{post.user.user_name}} on {{format_date
                             post.date_created}}</span>
                     </div>

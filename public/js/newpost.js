@@ -4,7 +4,6 @@ const newPostHandler = async (event) => {
     const postTitle = document.querySelector('#post-title').value.trim();
     const postText = document.querySelector('#post-text').value.trim();
 
-    console.log(postTitle, postText)
     if (!postTitle || !postText) {
         alert('Please provide both a title and text');
         return;

@@ -47,4 +47,19 @@ router.delete('/post_edit/:id', async (req, res) => {
     }
 })
 
+//POST route for creating comments
+router.post('/comment', async (req, res) => {
+    console.log('new post POST request received');
+    console.log(req.body.entry);
+    try {
+        const commentData = await Comment.create({
+            entry: req.body.entry,
+        })
+        console.log(commentData);
+        res.status(200).json(commentData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
+
 module.exports = router;

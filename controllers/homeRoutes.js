@@ -130,25 +130,22 @@ router.get('/post_view/:id', async (req, res) => {
   console.log('new post_view GET request received')
   try {
     const userPost = await Post.findByPk(req.params.id, {
-      include: 
+      include: [
+        User,
         {
           model: Comment,
-          attributes: ['entry', 'date_created'],
-          include: 
-            {
-              model: User,
-              attributes: ['user_name'],
-            }
-          
-        }
+          include: [User],
+        },
+      ]
       
     })
     const post = userPost.get({ plain: true });
-    console.log('line 149', post)
-    // res.render('blogview', {
-    //   post,
-    //   logged_in: req.session.logged_in
-    // })
+   
+    
+    res.render('blogview', {
+      post,
+      logged_in: req.session.logged_in
+    })
   } 
   catch (err) {
     console.log("Get route", err)

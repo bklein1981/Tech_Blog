@@ -10,20 +10,23 @@
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="brown-border mt-5">
-                    <h2 class="custom-brown custom-green strong-text h2-padding sml-font">{{post.title}}</h2>
+                    <div class="custom-brown custom-green strong-text h2-padding sml-font">{{post.title}}<span
+                            class="float-r xsml-font">Posted by {{post.user.user_name}} on {{format_date
+                            post.date_created}}</span></div>
                     <p class="px-4 py-3 fs-4">{{post.entry}}</p>
                 </div>
             </div>
         </div>
     </div>
-    {{#each comments as |comment| }}
+    {{#each post.comments as |comment| }}
     <div class="row justify-content-center">
         <div class="row justify-content-center">
             <div class="col-10">
                 <div class="brown-border mt-5">
                     <h2 class="custom-brown custom-green strong-text h2-padding sml-font">&nbsp;</h2>
                     <p class="px-4 pt-5 fs-4">{{comment.entry}}</p>
-                    <p class="px-4 pb-5 fs-4">&#8212 {{post}}, {{comment.date_created}}</p>
+                    <p class="px-4 pb-5 fs-4">&#8212 {{comment.user.user_name}}, {{format_date comment.date_created}}
+                    </p>
                 </div>
             </div>
         </div>
@@ -34,16 +37,17 @@
             <div class="col-10">
                 <div class="brown-border mt-5">
                     <h2 class="custom-brown custom-green strong-text h2-padding sml-font">&nbsp;</h2>
-                    <form class="mb-3 px-4">
-                        <label for="exampleFormControlTextarea1" class="form-label fs-4">Comment:</label>
-                        <textarea class="form-control px-4 blue-border" id="exampleFormControlTextarea1"
-                            rows="5"></textarea>
+                    <form class="mb-3 px-4 new-comment">
+                        <label for="newComment" class="form-label fs-4">Comment:</label>
+                        <textarea class="form-control px-4 blue-border" id="newComment" rows="5"></textarea>
                         <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-secondary btn-lg" id="comment-button">Submit</button>
+                            <button class="btn btn-secondary btn-lg" type="submit">Submit</button>
                         </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
+
+<script src="/js/newcomment.js"></script>
