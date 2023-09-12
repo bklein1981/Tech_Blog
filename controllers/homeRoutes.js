@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const userAuth = require('../utils/auth');
 
 //homePage Get route to display homepage
@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 //Dashboard GET route to display dashboard
 router.get('/dashboard/:id', userAuth, async (req, res) => {
   console.log("dashboard GET request received")
@@ -113,13 +114,13 @@ router.get('/post_edit/:id', async (req, res) => {
       }
     });
     const post = rawReturn.get({ plain: true });
-   console.log(post)
-    res.render('postedit',{
+    console.log(post)
+    res.render('postedit', {
       post,
       logged_in: req.session.logged_in
     })
   } catch (err) {
-    console.log("Get route",err)
+    console.log("Get route", err)
     res.status(500).json(err);
   }
 })
@@ -128,17 +129,31 @@ router.get('/post_edit/:id', async (req, res) => {
 router.get('/post_view/:id', async (req, res) => {
   console.log('new post_view GET request received')
   try {
-  const userPost = await Post.findByPk(req.params.id, {})
-  const post = userPost.get({ plain: true });
-  console.log(post)
-  res.render('blogview',{
-    post,
-    logged_in: req.session.logged_in
-  })
-} catch (err) {
-  console.log("Get route",err)
-  res.status(500).json(err);
-}
+    const userPost = await Post.findByPk(req.params.id, {
+      include: 
+        {
+          model: Comment,
+          attributes: ['entry', 'date_created'],
+          include: 
+            {
+              model: User,
+              attributes: ['user_name'],
+            }
+          
+        }
+      
+    })
+    const post = userPost.get({ plain: true });
+    console.log('line 149', post)
+    // res.render('blogview', {
+    //   post,
+    //   logged_in: req.session.logged_in
+    // })
+  } 
+  catch (err) {
+    console.log("Get route", err)
+    res.status(500).json(err);
+  }
 })
 
 

@@ -23,7 +23,7 @@
                 <div class="brown-border mt-5">
                     <h2 class="custom-brown custom-green strong-text h2-padding sml-font">&nbsp;</h2>
                     <p class="px-4 pt-5 fs-4">{{comment.entry}}</p>
-                    <p class="px-4 pb-5 fs-4">&#8212 {{comment.user.user_name}}, {{comment.date_created}}</p>
+                    <p class="px-4 pb-5 fs-4">&#8212 {{post}}, {{comment.date_created}}</p>
                 </div>
             </div>
         </div>
@@ -34,15 +34,16 @@
             <div class="col-10">
                 <div class="brown-border mt-5">
                     <h2 class="custom-brown custom-green strong-text h2-padding sml-font">&nbsp;</h2>
-                    <div class="mb-3 px-4">
+                    <form class="mb-3 px-4">
                         <label for="exampleFormControlTextarea1" class="form-label fs-4">Comment:</label>
-                        <textarea class="form-control px-4 blue-border" id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <textarea class="form-control px-4 blue-border" id="exampleFormControlTextarea1"
+                            rows="5"></textarea>
                         <div class="d-grid gap-2 mt-3">
-                        <button class="btn btn-secondary btn-lg" id="comment-button">Submit</button>
-                    </div>
-                    </div>
-                </div>
+                            <button class="btn btn-secondary btn-lg" id="comment-button">Submit</button>
+                        </div>
+                </form>
             </div>
         </div>
-    </div>       
+    </div>
+    </div>
 </section>
