@@ -55,7 +55,7 @@ router.get('/dashboard/:id', userAuth, async (req, res) => {
   }
 });
 
-//login GET route to display login page
+//Login GET route to display login page
 router.get('/login', (req, res) => {
   console.log("login GET request received")
   // If the user is already logged in, redirect the request to another route
@@ -78,6 +78,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
+//Route to redirect /dashboard to user's dashboard
 router.get('/dashboard', userAuth, async (req, res) => {
   console.log("dashboard GET request received");
   try {
@@ -89,6 +90,7 @@ router.get('/dashboard', userAuth, async (req, res) => {
   }
 });
 
+//New GET request to create a new post
 router.get('/new_posts', userAuth, async (req, res) => {
   console.log('new post POST request received')
   try {
@@ -100,7 +102,8 @@ router.get('/new_posts', userAuth, async (req, res) => {
   }
 })
 
-router.get('/post_edit/:id', userAuth, async (req, res) => {
+//New GET request to update or delete a post
+router.get('/post_edit/:id', async (req, res) => {
   console.log('new post-edit GET request received')
   try {
     const rawReturn = await Post.findByPk(req.params.id, {
