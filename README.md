@@ -32,7 +32,7 @@
   N/A
   
   ## Questions
-  Github: https://github.com/bklein1981
+  Github: https://github.com/bklein1981/Tech_Blog
   
-  Website: https://floating-ocean-15939-7f031cabb021.herokuapp.com/
-  
+  Website: https://floating-ocean-15939-7f031cabb021.herokuapp.com
+
