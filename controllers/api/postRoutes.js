@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
-const userAuth = require('../../utils/auth');
+const { Post, Comment } = require('../../models');
 
 //GET route for creating new posts
 router.post('/', async (req, res) => {
@@ -23,6 +22,7 @@ router.put('/post_edit/:id', async (req, res) => {
     try {
         const postEdit = await Post.update({
             title: req.body.title,
+            post_id: req.params.id,
             entry: req.body.entry,
         },
             {
@@ -48,14 +48,17 @@ router.delete('/post_edit/:id', async (req, res) => {
 })
 
 //POST route for creating comments
-router.post('/comment', async (req, res) => {
+router.post('/post_view/:id', async (req, res) => {
     console.log('new post POST request received');
-    console.log(req.body.entry);
+    postId = req.params.id;
+    userId = req.session.user_id
+    console.log('line 54', postId)
     try {
         const commentData = await Comment.create({
             entry: req.body.entry,
+            post_id: postId,
+            user_id: userId
         })
-        console.log(commentData);
         res.status(200).json(commentData);
     } catch (err) {
         res.status(500).json(err);
@@ -63,3 +66,4 @@ router.post('/comment', async (req, res) => {
 })
 
 module.exports = router;
+

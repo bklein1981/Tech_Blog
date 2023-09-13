@@ -104,7 +104,7 @@ router.get('/new_posts', userAuth, async (req, res) => {
 })
 
 //New GET request to update or delete a post
-router.get('/post_edit/:id', async (req, res) => {
+router.get('/post_edit/:id', userAuth, async (req, res) => {
   console.log('new post-edit GET request received')
   try {
     const rawReturn = await Post.findByPk(req.params.id, {
@@ -126,10 +126,11 @@ router.get('/post_edit/:id', async (req, res) => {
 })
 
 //New GET request to view a post, enter comments and view comments
-router.get('/post_view/:id', async (req, res) => {
+router.get('/post_view/:id', userAuth, async (req, res) => {
   console.log('new post_view GET request received')
   try {
     const userPost = await Post.findByPk(req.params.id, {
+
       include: [
         User,
         {
@@ -137,10 +138,8 @@ router.get('/post_view/:id', async (req, res) => {
           include: [User],
         },
       ]
-      
     })
     const post = userPost.get({ plain: true });
-   
     
     res.render('blogview', {
       post,
