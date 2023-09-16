@@ -40,10 +40,13 @@ router.put('/post_edit/:id', async (req, res) => {
 router.delete('/post_edit/:id', async (req, res) => {
     console.log('new post_edit DELETE request Received')
     try {
-        const postDelete = await Post.destroy({ where: { id: req.params.id } })
-        res.status(200).json(postDelete);
+        const postDelete = await Post.findOne({ where: { id: req.params.id } });
+        const data = await postDelete.destroy();
+        res.status(200).json(data);
+        console.log(res)
     } catch (err) {
         res.status(500).json(err);
+        console.log(err)
     }
 })
 

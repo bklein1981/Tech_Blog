@@ -15,6 +15,7 @@ document
                 headers: { 'Content-Type': 'application/json' },
             });
             if (response.ok) {
+                console.log(response);
                 document.location.replace('/dashboard')
             } else {
                 alert(response.statusText);
