@@ -41,12 +41,13 @@ router.delete('/post_edit/:id', async (req, res) => {
     console.log('new post_edit DELETE request Received')
     try {
         const postDelete = await Post.findOne({ where: { id: req.params.id } });
+        console.log(postDelete);
         const data = await postDelete.destroy();
+        console.log(data)
         res.status(200).json(data);
-        console.log(res)
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
-        console.log(err)
     }
 })
 
@@ -55,7 +56,6 @@ router.post('/post_view/:id', async (req, res) => {
     console.log('new post POST request received');
     postId = req.params.id;
     userId = req.session.user_id
-    console.log('line 54', postId)
     try {
         const commentData = await Comment.create({
             entry: req.body.entry,

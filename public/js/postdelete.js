@@ -1,9 +1,11 @@
 document
     .querySelector('.edit_form')
     .addEventListener('submit', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         const currentURL = window.location.href;
         const urlSegments = new URL(currentURL).pathname.split('/');
-        const postId = urlSegments[urlSegments.length - 1]; // Get the last segment
+        const postId = urlSegments[urlSegments.length - 1];
 
         const apiURL = `/api/posts/post_edit/${postId}`
 
@@ -14,10 +16,13 @@ document
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
             });
-            if (response.ok) {
-                console.log(response);
+            const statusCode = response.status;
+            console.log(response)
+            if (statusCode === 200) {
+                console.log('line 18 response received');
                 document.location.replace('/dashboard')
-            } else {
+            }
+            else {
                 alert(response.statusText);
             }
         }

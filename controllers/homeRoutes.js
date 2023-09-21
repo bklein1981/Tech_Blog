@@ -114,7 +114,6 @@ router.get('/post_edit/:id', userAuth, async (req, res) => {
       }
     });
     const post = rawReturn.get({ plain: true });
-    console.log(post)
     res.render('postedit', {
       post,
       logged_in: req.session.logged_in
