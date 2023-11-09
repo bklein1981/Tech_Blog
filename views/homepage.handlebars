@@ -12,13 +12,13 @@
             <div class="col-10">
                 {{#each posts as |post| }}
                 <a href="/post_view/{{post.id}}" class="post-link">
-                <div class="brown-border mt-5">
-                    <div class="custom-brown custom-green strong-text h2-padding sml-font">{{post.title}}<span
-                            class="float-r xsml-font">Posted by {{post.user.user_name}} on {{format_date
-                            post.date_created}}</span>
+                    <div class="row brown-border mt-5 custom-brown sml-font p-3">
+                        <div class="col-sm-12 col-lg-6">{{post.title}}</div>
+                        <div class="col-sm-12 col-lg-6 text-end"> Posted by {{post.user.user_name}} on {{format_date
+                            post.date_created}}
+                        </div>
                     </div>
-                    <p class="xsml-font p-3">{{post.entry}}</p>
-                </div>
+                    <div class="row xsml-font brown-border text-dark p-3">{{post.entry}}</div>
                 </a>
                 {{/each}}
             </div>

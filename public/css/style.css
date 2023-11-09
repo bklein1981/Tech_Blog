@@ -91,7 +91,7 @@ a {
 }
 
 .post-link {
-    color: inherit;
+    color: #DDE9D3;
     text-decoration: none;
 
 }
@@ -100,10 +100,6 @@ a {
     border-color: blue;
     border-width: 2px;
     text-decoration: none;
-
-}
-.post-link div:hover {
-   color: black;
 
 }
 
@@ -132,8 +128,19 @@ a {
     color: #9C9C9C
 }
 
-;
-
 .xsml-font {
     font-size: 20px !important
+}
+
+@media screen and (max-width: 850px) {
+    .nav-badge {
+        background-color: #DDE9D3;
+        font-size: 45px;
+        margin: 0px 0px 0px 15px;
+    }
+
+    .nav-btn {
+        color: #DDE9D3 !important;
+        font-size: 20pt;
+    }
 }
